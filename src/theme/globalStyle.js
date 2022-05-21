@@ -1,5 +1,4 @@
 import { createGlobalStyle } from "styled-components";
-import { Link } from "react-router-dom";
 
 const GlobalStyle = createGlobalStyle`
 
@@ -61,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-        background-color: #e5e5e5;
+        background-color: #ffffff;
         font-family: "Roboto";
     }
 `;
