@@ -7,6 +7,7 @@ import StyledLink from "../shared/styledLink";
 
 import Home from "./Home";
 import Showtimes from "./Showtimes";
+import Seats from "./Seats";
 
 export default function App () {
     return (
@@ -19,6 +20,7 @@ export default function App () {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/sessoes/:id" element={<Showtimes />} />
+                    <Route path="/assentos/:id" element={<Seats />} />
                 </Routes>
             </BrowserRouter>
         
@@ -36,6 +38,7 @@ const Header = styled.div`
     align-items: center;
 
     background-color: #c3cfd9;
+    border-bottom: 1px solid #9eadba;
 
     color: #e8833a;
     font-size: 32px;
