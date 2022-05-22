@@ -15,8 +15,8 @@ export default function Home () {
 
     React.useEffect(() => {
         axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
-            .then(response => setMovies(response.data))
-            .catch(error => setError(error.response));
+            .then(response => setMovies([...response.data]))
+            .catch(error => setError({...error.response}));
     }, []);
 
     if (!error) {

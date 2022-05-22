@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
+import Button from "../shared/button"
+
 export default function MovieShowtime (props) {
     return (
         <Container>
             <Date>{props.day.weekday} - {props.day.date}</Date>
             <div>
-                {props.day.showtimes.map(({ name, id }) => (<Time key={id.toString()}>{name}</Time>))}
+                {props.day.showtimes.map(({ name, id }) => (<Button key={id.toString()}>{name}</Button>))}
             </div>
         </Container>
     );
@@ -31,18 +33,4 @@ const Date = styled.p`
     font-size: 20px;
     font-weight: 400;
     color: #293845;
-`;
-
-const Time = styled.button`
-    width: 84px;
-    height: 44px;
-    margin-right: 16px;
-
-    background-color: #e8833a;
-    border: 1px solid transparent;
-    border-radius: 8px;
-
-    font-size: 20px;
-    font-weight: 400;
-    color: #ffffff;
 `;
