@@ -8,8 +8,12 @@ import StyledLink from "../shared/styledLink";
 import Home from "./Home";
 import Showtimes from "./Showtimes";
 import Seats from "./Seats";
+import Success from "./Success";
 
 export default function App () {
+
+    const [purchase, setPurchase] = React.useState({});
+
     return (
         <>
             <GlobalStyle />
@@ -20,7 +24,8 @@ export default function App () {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/sessoes/:id" element={<Showtimes />} />
-                    <Route path="/assentos/:id" element={<Seats />} />
+                    <Route path="/assentos/:id" element={<Seats makePurchase={setPurchase} />} />
+                    <Route path="/sucesso" element={<Success purchaseData={purchase} />} />
                 </Routes>
             </BrowserRouter>
         

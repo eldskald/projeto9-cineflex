@@ -2,16 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-import Button from "../shared/button"
-
 export default function MovieShowtimes (props) {
     return (
         <Container>
             <Date>{props.day.weekday} - {props.day.date}</Date>
             <div>
                 {props.day.showtimes.map(({ name, id }) => (
-                    <Link to={`/assentos/${id}`}>
-                        <Button key={id.toString()}>{name}</Button>
+                    <Link key={id.toString()} to={`/assentos/${id}`}>
+                        <Button>{name}</Button>
                     </Link>
                 ))}
             </div>
@@ -38,4 +36,19 @@ const Date = styled.p`
     font-size: 20px;
     font-weight: 400;
     color: #293845;
+`;
+
+const Button = styled.button`
+    width: 84px;
+    height: 44px;
+    margin-right: 16px;
+
+    background-color: #e8833a;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
 `;
