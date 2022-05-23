@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -8,10 +8,9 @@ import Error from "../shared/error";
 
 export default function Success ({ purchaseData }) {
 
-    const navigate = useNavigate();
-    const [error, setError] = React.useState(null);
+    const [error, setError] = useState(null);
 
-    React.useEffect(function () {
+    useEffect(function () {
         const data = {
             ids: [...purchaseData.seats],
             name: purchaseData.buyer.name,
@@ -39,7 +38,7 @@ export default function Success ({ purchaseData }) {
                     <p>Nome: {purchaseData.buyer.name}</p>
                     <p>CPF: {purchaseData.buyer.cpf}</p>
                 </InfoContainer>
-                <Button onClick={() => {navigate("/")}}>Voltar para Home</Button>
+                <HomeButton to="/"><button>Voltar para Home</button></HomeButton>
             </Container>
         );
     } else {
@@ -85,18 +84,24 @@ const InfoContainer = styled.div`
     }
 `;
 
-const Button = styled.button`
-    width: fit-content;
-    height: fit-content;
+const HomeButton = styled(Link)`
     margin: 24px auto;
 
-    padding: 12px 32px;
-    background-color: #e8833a;
-    border: 1px solid transparent;
-    border-radius: 8px;
-    cursor: pointer;
+    color: inherit;
+    text-decoration: inherit;
 
-    font-size: 24px;
-    font-weight: 400;
-    color: #ffffff;
+    button {
+        width: fit-content;
+        height: fit-content;
+
+        padding: 12px 32px;
+        background-color: #e8833a;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        cursor: pointer;
+
+        font-size: 24px;
+        font-weight: 400;
+        color: #ffffff;
+    }
 `;

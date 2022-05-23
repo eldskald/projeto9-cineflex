@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -12,7 +12,7 @@ import Success from "./Success";
 
 export default function App () {
 
-    const [purchase, setPurchase] = React.useState({});
+    const [purchase, setPurchase] = useState({});
 
     return (
         <>
@@ -28,8 +28,6 @@ export default function App () {
                     <Route path="/sucesso" element={<Success purchaseData={purchase} />} />
                 </Routes>
             </BrowserRouter>
-        
-            
         </>
     );
 }

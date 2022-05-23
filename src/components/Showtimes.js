@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
@@ -13,10 +13,10 @@ import MovieShowtimes from "./MovieShowtimes";
 export default function Showtimes () {
 
     const { id } = useParams();
-    const [movie, setMovie] = React.useState({});
-    const [error, setError] = React.useState(null);
+    const [movie, setMovie] = useState({});
+    const [error, setError] = useState(null);
     
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`)
             .then(response => setMovie({...response.data}))
             .catch(error => setError({...error.response}));

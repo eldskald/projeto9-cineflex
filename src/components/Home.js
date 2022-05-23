@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -10,10 +10,10 @@ import MovieThumbnail from "./MovieThumbnail";
 
 export default function Home () {
 
-    const [movies, setMovies] = React.useState([]);
-    const [error, setError] = React.useState(null);
+    const [movies, setMovies] = useState([]);
+    const [error, setError] = useState(null);
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get("https://mock-api.driven.com.br/api/v5/cineflex/movies")
             .then(response => setMovies([...response.data]))
             .catch(error => setError({...error.response}));

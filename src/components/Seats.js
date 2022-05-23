@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -12,14 +12,14 @@ export default function Seats ({ makePurchase }) {
 
     const navigate = useNavigate();
     const { id } = useParams();
-    const [data, setData] = React.useState({});
-    const [error, setError] = React.useState(null);
-    const [selectedSeats, setSelectedSeats] = React.useState([]);
-    const [selectedSeatsIDs, setSelectedSeatsIDs] = React.useState([]);
-    const [name, setName] = React.useState("");
-    const [cpf, setCPF] = React.useState("");
+    const [data, setData] = useState({});
+    const [error, setError] = useState(null);
+    const [selectedSeats, setSelectedSeats] = useState([]);
+    const [selectedSeatsIDs, setSelectedSeatsIDs] = useState([]);
+    const [name, setName] = useState("");
+    const [cpf, setCPF] = useState("");
 
-    React.useEffect(() => {
+    useEffect(() => {
         axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`)
             .then(response => setData({...response.data}))
             .catch(error => setError({...error.response}));
